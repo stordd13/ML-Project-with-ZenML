@@ -25,7 +25,7 @@ class DataPreprocessStrategy(DataStrategy):
         Preprocess data
         """
         try:
-            data = data.drop(
+            data = data.drop(columns=
                 [
                     "order_approved_at",
                     "order_delivered_carrier_date",
@@ -43,8 +43,8 @@ class DataPreprocessStrategy(DataStrategy):
 
             data = data.select_dtypes(include=[np.number])
             cols_to_drop = ["customer_zip_code_prefix", "order_item_id"]
-            data = data.drop(cols_to_drop, axis=1)
-        
+            data = data.drop(columns=cols_to_drop, axis=1)
+            return data
         except Exception as e:
             logger.error(f"Error in preprocessing data: {e}")
             raise e 

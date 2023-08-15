@@ -27,7 +27,6 @@ def ingest_data(data_path:str) -> pd.DataFrame:
     try:
         ingest_data = IngestData(data_path)
         df = ingest_data.get_data()
-        print(df.shape)
         return df
     except Exception as e:
         logging.error(f"Error while ingestion data : {e}")
